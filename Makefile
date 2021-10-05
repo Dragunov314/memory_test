@@ -3,7 +3,7 @@ GCC_DIR := /usr
 CXX := $(GCC_DIR)/bin/g++
 CPPFLAGS := --std=c++11 -O3
 CXXFLAGS := 
-LDFLAGS := -lm -lstdc++ 
+LDFLAGS := -lm -lstdc++ -ltcmalloc
 EXE_NAME := memory_test
 
 all:
@@ -15,4 +15,7 @@ time:
 	/usr/bin/time -f "%e %M" ./$(EXE_NAME)
 
 clean:
-	rm test_code -rf
+	rm memory_test -rf
+	rm *.hprof -rf
+	rm *.heap -rf
+	rm ./profile_result/* -rf
